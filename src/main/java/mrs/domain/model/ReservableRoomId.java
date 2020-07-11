@@ -5,14 +5,29 @@ import java.time.LocalDate;
 
 import javax.persistence.Embeddable;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Embeddable
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 public final class ReservableRoomId implements Serializable {
 
-	private final Integer roomId;
+	private Integer roomId;
 
-	private final LocalDate reservedDate;
+	private LocalDate reservedDate;
+
+	public ReservableRoomId(Integer roomId, LocalDate reservedDate) {
+		this.roomId = roomId;
+		this.reservedDate = reservedDate;
+	}
+
+	public ReservableRoomId() {
+
+	}
+
+
 
 }
