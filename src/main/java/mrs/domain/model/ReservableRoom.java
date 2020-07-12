@@ -26,9 +26,8 @@ public final class ReservableRoom implements Serializable {
 	@MapsId("roomId")
 	private MeetingRoom meetingRoom;
 
-	public ReservableRoom(ReservableRoomId reservableRoomId, MeetingRoom meetingRoom) {
+	public ReservableRoom(ReservableRoomId reservableRoomId) {
 		this.reservableRoomId = reservableRoomId;
-		this.meetingRoom = meetingRoom;
 	}
 
 	public ReservableRoom() {
