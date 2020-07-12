@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,7 +58,7 @@ public class ReservationService {
 
 		reservation.ifPresent(r -> {
 			if (RoleName.ADMIN != requestUser.getRoleName() && !Objects.equals(r.getUser().getUserId(), requestUser.getUserId())) {
-				throw new IllegalStateException("要求されたキャンセル可できません");
+				throw new AccessDeniedException("要求されたキャンセルは許可できません");
 			}
 			reservationRepository.delete(r);
 		});
