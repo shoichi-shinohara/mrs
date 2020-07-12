@@ -12,13 +12,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public final class ReservationForm implements Serializable {
+@EndTimeMustBeAfterStartTime(message = "終了時間は開始時刻より後にしてください")
+public class ReservationForm implements Serializable {
 
 	@NotNull(message = "必須です")
+	@ThirtyMinutesUnit(message = "30分単位で入力してください")
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime startTime;
 
 	@NotNull(message = "必須です")
+	@ThirtyMinutesUnit(message = "30分単位で入力してください")
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime endTime;
 }

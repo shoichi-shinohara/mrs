@@ -33,9 +33,9 @@ public class ReservationService {
 	public Reservation reserve(Reservation reservation) {
 		ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
 
-		Optional<ReservableRoom> reservable = reservableRoomRepository.findById(reservableRoomId);
+		ReservableRoom reservable = reservableRoomRepository.findOneForUpdateByReservableRoomId(reservableRoomId);
 
-		if (reservable.isEmpty()) {
+		if (reservable == null) {
 			throw new UnavailableReservationException("入力された日付・部屋の組み合わせは予約できません");
 		}
 

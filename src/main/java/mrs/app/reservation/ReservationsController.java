@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -90,7 +89,7 @@ public class ReservationsController {
 	@RequestMapping(method = RequestMethod.POST, params = "cancel")
 	String cancel(@RequestParam("reservationId") Integer reservationId,
 			@PathVariable("roomId") Integer roomId,
-			@DateTimeFormat(iso = ISO.DATE) @PathVariable("date") LocalDate date,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
 			Model model) {
 
 		User user = dummyUser();
